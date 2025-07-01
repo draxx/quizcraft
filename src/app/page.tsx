@@ -1,4 +1,7 @@
-// src/app/page.tsx
 export default function Home() {
-  return <div className="p-6">Welcome to QuizCraft 🤘🏻</div>;
+  return (
+    <main className="min-h-screen flex flex-col items-center justify-center">
+      <h1>✨ QuizCraft ✨</h1>
+    </main>
+  );
 }
