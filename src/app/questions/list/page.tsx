@@ -1,14 +1,21 @@
 "use client";
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 import { useEffect, useState } from "react";
 import { fetchQuestions } from "@/lib/api";
 import { Badge } from "@/components/ui/badge"
+import Link from "next/link";
 
+type QuestionListItem = {
+  id: string;
+  localizedId: string;
+  question: string;
+  difficulty: string;
+};
 
 function QuestionsList() {
-  const [questions, setQuestions] = useState<any[]>([]);
+  const [questions, setQuestions] = useState<QuestionListItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -25,13 +32,14 @@ function QuestionsList() {
   return (
     <>
         {questions.map((q) => (
-        <Card key={q.id}>
-            <CardContent className="text-sm font-bold">
-                <div className="text-xs">{q.baseId}</div>
-                <Badge>{q.difficulty}</Badge><br/>
-                {q.question}
-            </CardContent>
-        </Card>
+          <Link key={q.id} href={`/questions/${q.localizedId}`}>
+            <Card className="cursor-pointer hover:scale-[1.02] transition">
+                <CardContent className="text-sm font-bold">
+                    <Badge>{q.difficulty}</Badge><br/>
+                    {q.question}
+                </CardContent>
+            </Card>
+          </Link>
         ))}
     </>
     );
