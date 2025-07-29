@@ -1,0 +1,5 @@
+export const API_URL = process.env.NEXT_PUBLIC_API_URL!;
+export const COGNITO_URL = process.env.NEXT_PUBLIC_COGNITO_URL!;
+export const COGNITO_CLIENT_ID = process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID!;
+export const COGNITO_REDIRECT_URL = process.env.NEXT_PUBLIC_COGNITO_REDIRECT_URL!;
+export const COGNITO_LOGOUT_CALLBACK_URL = process.env.NEXT_PUBLIC_COGNITO_LOGOUT_CALLBACK_URL!;
