@@ -1,19 +1,20 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
+import { logout } from "@/lib/auth";
 import {
   BadgeQuestionMark,
-  BookText, 
-  Tags
-} from "lucide-react"
-
-import { ChevronRight } from "lucide-react"
+  BookText,
+  Tags,
+  LogOut,
+  ChevronRight,
+} from "lucide-react";
 
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from "@/components/ui/collapsible";
 import {
   Sidebar,
   SidebarContent,
@@ -28,7 +29,7 @@ import {
   SidebarMenuSubItem,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 const navMain = [
   {
@@ -77,11 +78,15 @@ const navMain = [
       },
     ],
   },
-]
+];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar variant="inset" className="bg-[hsl(var(--sidebar-background))]" {...props}>
+    <Sidebar
+      variant="inset"
+      className="bg-[hsl(var(--sidebar-background))]"
+      {...props}
+    >
       <SidebarHeader>
         {/* Tu peux mettre ici un logo ou un titre */}
       </SidebarHeader>
@@ -125,8 +130,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             ))}
           </SidebarMenu>
         </SidebarGroup>
+        <SidebarGroup className="mt-auto">
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild tooltip="Déconnexion">
+                <button
+                  onClick={() => logout()}
+                  className="flex items-center gap-2 w-full text-left"
+                >
+                  <LogOut className="size-4" />
+                  <span>Déconnexion</span>
+                </button>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
