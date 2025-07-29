@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription, CardAction } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { CodeBlock } from "@/components/ui/code-block";
+import { toast } from "sonner";
 
 export default function UIkitPage() {
   return (
@@ -77,6 +78,24 @@ export default function UIkitPage() {
             <Card>
               <CardContent>Card without header/footer</CardContent>
             </Card>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Toasts</h2>
+          <div className="space-y-4 max-w-md">
+            <Button
+              onClick={() => toast.success("Yeah! 🎉")}
+            >
+              Porter un toast
+            </Button>
+             
+            <Button variant="destructive"
+              onClick={() => toast.error("Fail.. 😭")}
+            >
+              Porter un toast
+            </Button>
+            
           </div>
         </section>
       </main>

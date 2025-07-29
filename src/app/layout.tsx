@@ -3,6 +3,7 @@
 import "./globals.css";
 import { AuthProvider } from "@/components/providers/auth-provider";
 import MainLayout from "@/components/layout/main-layout";
+import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
@@ -15,6 +16,14 @@ export default function RootLayout({
         <AuthProvider>
           <MainLayout>{children}</MainLayout>
         </AuthProvider>
+        <Toaster
+          richColors
+          expand={true}
+          theme="dark"
+          position="top-right"
+          closeButton
+          duration={2000}
+        />
       </body>
     </html>
   );
