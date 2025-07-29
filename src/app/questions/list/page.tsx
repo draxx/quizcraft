@@ -42,45 +42,42 @@ function QuestionsList() {
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>Erreur : {error}</p>;
 
-  return (
-    <>
-      {questions.map((q) => (
-        <Link key={q.id} href={`/questions/${q.localizedId}`}>
-          <Card className="cursor-pointer transition-colors duration-200 hover:bg-[rgba(255,255,255,0.04)] relative group">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <DifficultyBadge difficulty={q.difficulty} />
-                <div className="flex gap-2">
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleEdit(q.localizedId);
-                    }}
-                    className="cursor-pointer rounded-md p-2 bg-muted hover:bg-primary hover:text-primary-foreground transition-colors border border-border shadow focus:outline-none focus:ring-2 focus:ring-primary"
-                    aria-label="Modifier"
-                  >
-                    <SquarePen size={12} />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={(e) => handleDelete(q.localizedId, e)}
-                    className="cursor-pointer rounded-md p-2 bg-muted hover:bg-destructive hover:text-destructive-foreground transition-colors border border-border shadow focus:outline-none focus:ring-2 focus:ring-destructive"
-                    aria-label="Supprimer"
-                  >
-                    <Trash2 size={12} />
-                  </button>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="text-sm font-extrabold">
-              {q.question}
-            </CardContent>
-          </Card>
-        </Link>
-      ))}
-    </>
-  );
+  return questions.map((q) => (
+    
+    <Link key={q.localizedId} href={`/questions/${q.localizedId}`}>
+      <Card className="cursor-pointer transition-colors duration-200 hover:bg-[rgba(255,255,255,0.04)] relative group">
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <DifficultyBadge difficulty={q.difficulty} />
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleEdit(q.localizedId);
+                }}
+                className="cursor-pointer rounded-md p-2 bg-muted hover:bg-primary hover:text-primary-foreground transition-colors border border-border shadow focus:outline-none focus:ring-2 focus:ring-primary"
+                aria-label="Modifier"
+              >
+                <SquarePen size={12} />
+              </button>
+              <button
+                type="button"
+                onClick={(e) => handleDelete(q.localizedId, e)}
+                className="cursor-pointer rounded-md p-2 bg-muted hover:bg-destructive hover:text-destructive-foreground transition-colors border border-border shadow focus:outline-none focus:ring-2 focus:ring-destructive"
+                aria-label="Supprimer"
+              >
+                <Trash2 size={12} />
+              </button>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent className="text-sm font-extrabold">
+          {q.question}
+        </CardContent>
+      </Card>
+    </Link>
+  ));
 }
 
 export default function QuestionsListPage() {
